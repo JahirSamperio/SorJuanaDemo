@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Alumnos - EPSJIC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+</head>
+
+<body class="min-h-screen bg-gray-50">
+    <!-- Navegación principal -->
+    <nav class="bg-white shadow-md relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <img src="../../img/LogoSor.png" alt="EPSJIC" class="h-10 brightness-0 invert">
+                    <span class="font-semibold">EPSJIC</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../../index.html"
+                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Acerca de
+                        Nosotros</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Institución</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+                        <i class="lucide lucide-menu h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../../index.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Inicio</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Acerca
+                    de Nosotros</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Institución</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="max-w-6xl mx-auto p-4">
+        <h1 class="text-2xl md:text-3xl font-bold text-[#0066CC] mb-6">Portal de Alumnos</h1>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow mb-6 overflow-x-auto">
+            <div class="flex flex-wrap items-center justify-start p-2" id="tabsList">
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="home">
+                    <i class="lucide lucide-file-text w-4 h-4 mr-2"></i>
+                    <span>Inicio</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="scholarships">
+                    <i class="lucide lucide-graduation-cap w-4 h-4 mr-2"></i>
+                    <span>Convocatorias</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="calendars">
+                    <i class="lucide lucide-calendar w-4 h-4 mr-2"></i>
+                    <span>Calendarios</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="grades">
+                    <i class="lucide lucide-clipboard-list w-4 h-4 mr-2"></i>
+                    <span>Consulta de Boleta</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="schedules">
+                    <i class="lucide lucide-clock w-4 h-4 mr-2"></i>
+                    <span>Horarios</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="support">
+                    <i class="lucide lucide-school w-4 h-4 mr-2"></i>
+                    <span>Programa Institucional de Apoyo</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="tabContents">
+            <!-- Home Tab -->
+            <div class="tab-content" id="homeTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl text-center font-bold text-[#0066CC] mb-4">Bienvenid@ Alumn@</h2>
+                    <div class="flex justify-center mb-4">
+                        <img src="../../img/alumnos1.png" alt="Estudiantes"
+                            class="rounded-lg max-w-full md:max-w-md w-full h-auto object-cover">
+                    </div>
+                    <p class="text-gray-600 text-sm md:text-base">
+                        Aquí encontrarás información relevante sobre inscripción, reingreso, calificaciones y demás
+                        servicios que requieras.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Scholarships Tab -->
+            <div class="tab-content hidden" id="scholarshipsTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Convocatorias de Becas</h2>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg">
+                            <h3 class="text-lg font-semibold">Becas Institucionales</h3>
+                            <p class="text-sm md:text-base">Información sobre becas ofrecidas por la institución.</p>
+                            <button
+                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                más</button>
+                        </div>
+                        <div class="p-4 border rounded-lg">
+                            <h3 class="text-lg font-semibold">Becas Federales</h3>
+                            <p class="text-sm md:text-base">Información sobre becas ofrecidas por el gobierno federal.
+                            </p>
+                            <button
+                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                más</button>
+                        </div>
+                        <div class="p-4 border rounded-lg">
+                            <h3 class="text-lg font-semibold">Becas de Excelencia</h3>
+                            <p class="text-sm md:text-base">Información sobre becas para estudiantes destacados.</p>
+                            <button
+                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                más</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendars Tab -->
+            <div class="tab-content hidden" id="calendarsTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Calendarios</h2>
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap gap-2">
+                            <button class="calendar-tab px-3 py-2 bg-blue-600 text-white rounded text-sm md:text-base"
+                                data-calendar="uaeh">UAEH</button>
+                            <button
+                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                data-calendar="first">Primer Parcial</button>
+                            <button
+                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                data-calendar="second">Segundo Parcial</button>
+                            <button
+                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                data-calendar="third">Tercer Parcial</button>
+                            <button
+                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                data-calendar="activities">Actividades del Semestre</button>
+                        </div>
+                        <div id="calendarContent" class="border rounded-lg p-4">
+                            <!-- Calendar content will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grades Tab -->
+            <div class="tab-content hidden" id="gradesTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Consulta de Boleta</h2>
+                    <form id="gradesForm">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Número de Cuenta</label>
+                            <input type="text"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                placeholder="Ingrese su número de cuenta">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+                            <input type="password"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                placeholder="Ingrese su contraseña">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ingresar</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Schedules Tab -->
+            <div class="tab-content hidden" id="schedulesTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Horarios</h2>
+                    <div class="space-y-4">
+                        <select id="scheduleType"
+                            class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-sm md:text-base">
+                            <option value="">Seleccione un tipo de horario</option>
+                            <option value="reading">Periodos de Lectura</option>
+                            <option value="labs">Laboratorios y Centros</option>
+                            <option value="classes">Clases Regulares</option>
+                            <option value="propaedeutic">Curso Propedéutico</option>
+                            <option value="attention">Atención al Estudiante</option>
+                        </select>
+                        <div class="border rounded-lg p-4 overflow-x-auto">
+                            <h3 class="font-semibold mb-2 text-sm md:text-base">Horario</h3>
+                            <table class="w-full text-sm md:text-base">
+                                <thead>
+                                    <tr>
+                                        <th class="border p-2">Hora</th>
+                                        <th class="border p-2">Lunes</th>
+                                        <th class="border p-2">Martes</th>
+                                        <th class="border p-2">Miércoles</th>
+                                        <th class="border p-2">Jueves</th>
+                                        <th class="border p-2">Viernes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Aquí irían las filas del horario -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Tab -->
+            <div class="tab-content hidden" id="supportTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Programa Institucional de Apoyo</h2>
+
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg">
+                            <h3 class="text-lg font-semibold">Tutorías</h3>
+                            <p class="text-sm md:text-base">Información sobre el programa de tutorías y cómo acceder a
+                                él.</p>
+                            <button
+                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Solicitar
+                                Tutoría</button>
+                        </div>
+                        <div class="p-4 border rounded-lg">
+                            <h3 class="text-lg font-semibold">Asesorías Académicas</h3>
+                            <p class="text-sm md:text-base">Detalles sobre las asesorías disponibles para diferentes
+                                materias.</p>
+                            <button
+                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                Horarios de Asesorías</button>
+                        </div>
+                        <div class="p-4 border rounded-lg">
+                            <h3 class="text-lg font-semibold">Orientación Educativa</h3>
+                            <p class="text-sm md:text-base">Servicios de orientación para apoyar tu desarrollo académico
+                                y personal.</p>
+                            <button
+                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Agendar
+                                Cita</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`${tabName}Tab`).classList.remove('hidden');
+            });
+        });
+
+        // Calendar functionality
+        const calendarTabs = document.querySelectorAll('.calendar-tab');
+        const calendarContent = document.getElementById('calendarContent');
+
+        calendarTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const calendarType = tab.getAttribute('data-calendar');
+                calendarTabs.forEach(t => t.classList.remove('bg-blue-600', 'text-white'));
+                tab.classList.add('bg-blue-600', 'text-white');
+
+                // Here you would typically load the appropriate calendar content
+                calendarContent.innerHTML = `<p>Calendario para ${calendarType}</p>`;
+            });
+        });
+
+        // Grades form submission
+        const gradesForm = document.getElementById('gradesForm');
+        gradesForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically handle the form submission
+            alert('Formulario de calificaciones enviado');
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-semibold">Universidad Autónoma del Estado de Hidalgo (UAEH)</h3>
+                    <p class="text-sm">© 2024 Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#facebook"></use>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#twitter"></use>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/uaeh" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#instagram"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
