@@ -1,0 +1,361 @@
+/* Swiper button styles */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #F8F8F8;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-pagination-bullet {
+    background-color: #F8F8F8;
+}
+
+.swiper-container {
+    overflow: hidden;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+}
+
+.swiper-wrapper {
+    transition: transform 0.3s ease;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+}
+
+#mobile-menu {
+    background-color: #F8F8F8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 200px;
+    z-index: 50;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0; /* Inicialmente oculto */
+    visibility: hidden; /* Para evitar el espacio ocupado */
+}
+
+#mobile-menu.visible {
+    opacity: 1; /* Visible cuando tiene la clase */
+    visibility: visible; /* Hace visible el menú */
+}
+
+#mobile-menu a {
+    display: block;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+    text-align: center;
+}
+
+#mobile-menu a:hover {
+    background-color: #E0E0E0; /* Cambiado para mejor visibilidad al hover */
+}
+
+.mobile-menu-buttons {
+    margin-top: 10px;
+}
+
+.mobile-menu-buttons button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #02349A;
+    color: #F8F8F8;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.mobile-menu-buttons button:hover {
+    background-color: #0066CC;
+}
+
+/* General menu styles */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #F8F8F8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    display: block;
+    text-align: left;
+}
+
+.menu a:hover {
+    background-color: #0066CC;
+    color: #F8F8F8;
+}
+
+/* Desktop Menu */
+.desktop-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Estilo para los enlaces del menú */
+.desktop-menu a,
+.desktop-menu button {
+    color: #4a5568; /* text-gray-700 */
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem; /* rounded-md */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hover en los botones */
+.desktop-menu a:hover,
+.desktop-menu button:hover {
+    color: #3182ce; /* hover:text-blue-600 */
+}
+
+/* Estilos para los botones con íconos */
+.desktop-menu button {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo para los íconos SVG */
+.desktop-menu svg {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.25rem; /* ml-1 */
+}
+
+/* Ocultar submenús por defecto */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #ffffff; /* bg-white */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+    border-radius: 0.375rem; /* rounded-lg */
+    margin-top: 0.5rem; /* mt-2 */
+    z-index: 10;
+    width: 12rem; /* w-48 */
+}
+
+/* Mostrar submenús al hacer hover en el padre */
+.group:hover .submenu {
+    display: block;
+}
+
+/* Estilos para los enlaces dentro de los submenús */
+.submenu a {
+    display: block;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    font-size: 0.875rem; /* text-sm */
+    color: #2d3748; /* text-gray-800 */
+    text-decoration: none;
+}
+
+/* Hover en los enlaces del submenú */
+.submenu a:hover {
+    background-color: #ebf8ff; /* hover:bg-blue-100 */
+}
+
+/* Estilos adicionales para los botones de los submenús */
+.submenu button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 1rem; /* px-4 py-2 */
+    font-size: 0.875rem; /* text-sm */
+    color: #2d3748; /* text-gray-800 */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Alinear correctamente los submenús anidados */
+.submenu .submenu {
+    top: 0;
+    left: 100%; /* Posiciona el submenú anidado a la derecha */
+}
+
+/* Submenu adjustments */
+.group {
+    position: relative;
+}
+
+.group .submenu {
+    display: none;
+    position: absolute;
+    top: 0; /* Cambiado a 0 para alinearse con el menú principal */
+    left: 100%; /* Cambiado para mostrar el submenú al lado derecho del menú principal */
+    background-color: #F8F8F8;
+    min-width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.group:hover .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.submenu .submenu-item:hover .sub-submenu {
+    display: block;
+}
+
+.submenu a, .sub-submenu a {
+    padding: 10px 20px;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-bottom: 5px; /* Añade margen entre los elementos */
+}
+
+.submenu a:hover, .sub-submenu a:hover {
+    background-color: #0066CC;
+    color: #F8F8F8;
+}
+
+/* Icon box styles */
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
+
+.icon-box img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.icon-box h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.icon-box p {
+    font-size: 0.9em;
+    color: #4A4A4A;
+}
+
+.section-header {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #D32F2F;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Logo styles */
+.logo-img {
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        max-height: 40px;
+    }
+}
+
+/* Submenu hover and transitions */
+.group-hover\:block {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 150px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.group:hover .group-hover\:block,
+.group.open .group-hover\:block {
+    display: block;
+}
+
+.group-hover\:block a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.group-hover\:block a:hover {
+    background-color: #0066CC;
+    color: #F8F8F8;
+}
+
+.group-hover\:block .group {
+    position: relative;
+}
+
+.group-hover\:block .group-hover\:block {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 150px;
+}
+
+.group-hover\:block .group:hover .group-hover\:block {
+    display: block;
+}
+
+.submenu-item:hover > .sub-submenu {
+    display: block;
+}
+
+.sub-submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 200px;
+    background-color: #F8F8F8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

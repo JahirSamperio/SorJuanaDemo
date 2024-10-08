@@ -4,173 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern School Website</title>
+  <title>Modelo Sor Juana</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <style>
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #f8f9fa;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-    }
-
-    .swiper-button-next {
-      right: 10px;
-    }
-
-    .swiper-button-prev {
-      left: 10px;
-    }
-
-    .swiper-pagination-bullet {
-      background-color: white;
-    }
-
-    .swiper-container {
-      overflow: hidden;
-    }
-
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 400px;
-      /* Ajusta la altura según tus necesidades */
-    }
-
-    /* Evitar que los slides salgan de la vista */
-    .swiper-wrapper {
-      transition: transform 0.3s ease;
-      /* Añade transición suave */
-    }
-
-    /* Estilo para mostrar el menú en dispositivos móviles */
-    .mobile-menu {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .mobile-menu {
-        display: block;
-      }
-
-      .desktop-menu {
-        display: none;
-      }
-    }
-
-    /* Mejor presentación del menú móvil */
-    #mobile-menu {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 10px;
-      position: absolute;
-      top: 60px;
-      right: 10px;
-      width: 200px;
-      z-index: 50;
-      /* Asegúrate de que el menú esté en la parte superior */
-    }
-
-    #mobile-menu a {
-      display: block;
-      margin-bottom: 8px;
-      padding: 10px;
-      border-radius: 6px;
-      background-color: #f8f8f8;
-      text-align: center;
-    }
-
-    #mobile-menu a:hover {
-      background-color: #e0e0e0;
-    }
-
-    /* Añadir visibilidad para los botones */
-    .mobile-menu-buttons {
-      margin-top: 10px;
-    }
-
-    .mobile-menu-buttons button {
-      display: block;
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      background-color: #1D4ED8;
-      color: white;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .mobile-menu-buttons button:hover {
-      background-color: #2563EB;
-    }
-
-    /* Ajustes del menú */
-    .menu {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-      background-color: #f8f9fa;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .menu a {
-      text-decoration: none;
-      color: #333;
-      padding: 8px 12px;
-      margin-right: 10px;
-    }
-
-    .menu a:hover {
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 4px;
-    }
-
-    /* Ajustes personalizados para los íconos y textos */
-    .icon-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin: 20px;
-    }
-
-    .icon-box img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 10px;
-    }
-
-    .icon-box h4 {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .icon-box p {
-      font-size: 0.9em;
-      color: #4A4A4A;
-    }
-
-    .section-header {
-      font-size: 1.8em;
-      font-weight: bold;
-      color: #D32F2F;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-  </style>
 </head>
 
 <body class="min-h-screen bg-gray-50">
+
   <!-- Navigation Bar -->
   <nav class="bg-white shadow-md relative">
     <div class="max-w-6xl mx-auto px-4">
@@ -179,7 +22,9 @@
           <svg class="w-8 h-8 text-blue-600">
             <use xlink:href="#graduation-cap"></use>
           </svg>
-          <span class="font-semibold text-gray-800">EPSJIC</span>
+          <a href="index.html" class="font-semibold text-gray-800">
+            <img src="img/LogoSor.png" alt="Logo" class="logo-img">
+          </a>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -192,37 +37,259 @@
           </button>
         </div>
 
-        <!-- Desktop Menu -->
-        <div class="desktop-menu hidden md:flex space-x-8">
-          <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-          <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Acerca de
-            Nosotros</a>
-          <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Institución</a>
+        <!-- Menu de Escritorio -->
+        <div class="desktop-menu">
+          <a href="index.html">Inicio</a>
+
+          <!-- Menu y submenus de Acerca de Nosotros -->
+          <div class="relative group">
+            <button>
+              Acerca de Nosotros
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="submenu">
+              <a href="#">Trasfondo de la institución</a>
+              <div class="relative group">
+                <button>
+                  Identidad
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Misión y Visión</a>
+                  <a href="#">Ideario</a>
+                </div>
+              </div>
+              <div class="relative group">
+                <button>
+                  Modelo Educativo
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Completo</a>
+                  <a href="#">Sintético</a>
+                </div>
+              </div>
+              <div class="relative group">
+                <button>
+                  Directorio
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Directivos</a>
+                  <a href="#">Docentes</a>
+                  <a href="#">Administrativos</a>
+                </div>
+              </div>
+              <a href="#">Ubicación</a>
+              <a href="#">Visita Virtual</a>
+            </div>
+          </div>
+
+          <!-- Menu y submenus de Institucion -->
+          <div class="relative group">
+            <button>
+              Institución
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="submenu">
+              <div class="relative group">
+                <button>
+                  Reglamentos
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Sala de aprendizaje</a>
+                  <a href="#">Biblioteca</a>
+                  <a href="#">Centro de cómputo</a>
+                  <a href="#">Reglamento PSJ</a>
+                  <a href="#">Áreas experimentales</a>
+                </div>
+              </div>
+              <div class="relative group">
+                <button>
+                  Infraestructura
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Académica</a>
+                  <a href="#">Artística y Deportiva</a>
+                </div>
+              </div>
+              <div class="relative group">
+                <button>
+                  Programa académico
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Objetivo</a>
+                  <a href="#">Plan de estudios</a>
+                  <a href="#">Metodología</a>
+                </div>
+              </div>
+              <a href="#">Estructura Orgánica</a>
+            </div>
+          </div>
         </div>
+        <script src="script.js"></script>
+
 
         <!-- Action Buttons -->
         <div class="hidden md:flex items-center space-x-4">
-          <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Portal
+          <button
+            class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
             Alumnos</button>
-          <a href="./pages/crearAviso.html" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Portal
+          <a href="./pages/crearAviso.html"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
             Administrativo</a>
         </div>
       </div>
 
       <!-- Mobile Menu Dropdown -->
-      <div id="mobile-menu" class="hidden">
-        <a href="#">Inicio</a>
-        <a href="#">Acerca de Nosotros</a>
-        <a href="#">Institución</a>
-        <div class="mobile-menu-buttons">
-          <button>Portal Alumnos</button>
-          <button>Portal Administrativo</button>
+      <div id="mobile-menu" class="hidden md:hidden">
+        <a href="index.html" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Inicio</a>
+        <div class="relative">
+          <button
+            class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+            onclick="toggleSubmenu(this)">
+            Acerca de Nosotros
+            <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="hidden pl-4">
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Trasfondo de la institución</a>
+            <button
+              class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+              onclick="toggleSubmenu(this)">
+              Identidad
+              <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="hidden pl-4">
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Misión y Visión</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Ideario</a>
+            </div>
+            <button
+              class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+              onclick="toggleSubmenu(this)">
+              Modelo Educativo
+              <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="hidden pl-4">
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Completo</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Sintético</a>
+            </div>
+            <button
+              class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+              onclick="toggleSubmenu(this)">
+              Directorio
+              <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="hidden pl-4">
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Directivos</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Docentes</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Administrativos</a>
+            </div>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Ubicación</a>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Visita Virtual</a>
+          </div>
+        </div>
+        <div class="relative">
+          <button
+            class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+            onclick="toggleSubmenu(this)">
+            Institución
+            <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="hidden pl-4">
+            <button
+              class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+              onclick="toggleSubmenu(this)">
+              Reglamentos
+              <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="hidden pl-4">
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Sala de aprendizaje</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Biblioteca</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Centro de cómputo</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Reglamento PSJ</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Áreas experimentales</a>
+            </div>
+            <button
+              class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+              onclick="toggleSubmenu(this)">
+              Infraestructura
+              <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="hidden pl-4">
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Académica</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Artística y Deportiva</a>
+            </div>
+            <button
+              class="w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 flex items-center justify-between"
+              onclick="toggleSubmenu(this)">
+              Programa académico
+              <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="hidden pl-4">
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Objetivo</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Plan de estudios</a>
+              <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Metodología</a>
+            </div>
+            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Estructura orgánica</a>
+          </div>
+        </div>
+        <div class="py-2 px-4">
+          <button
+            class="w-full bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200 mb-2">Portal
+            Alumnos</button>
+          <a href="./pages/crearAviso.html"
+            class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200 text-center">Portal
+            Administrativo</a>
         </div>
       </div>
     </div>
   </nav>
 
   <div class="max-w-6xl mx-auto p-4">
+
     <!-- Main Banner with Carousel -->
     <div class="relative bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg p-8 mb-8 text-white mt-8">
       <div class="swiper-container">
@@ -308,35 +375,34 @@
       </div>
     </div>
 
-    <main class="py-12">
-      <!-- Aquí agregamos la sección de "¿Por qué estudiar con nosotros?" -->
-      <section class="py-12">
-        <h2 class="section-header" style="color: #333;">¿Por qué estudiar con nosotros?</h2>
-        <p class="text-center text-gray-700 mb-8 px-4">
-          En nuestra institución, nos comprometemos a ofrecerte una formación académica de calidad, impulsando tu
-          desarrollo profesional y personal a través de actividades extracurriculares, programas internacionales, y un
-          sólido acompañamiento docente.
-        </p>
+    <!-- Aquí agregamos la sección de "¿Por qué estudiar con nosotros?" -->
+    <section class="py-12">
+      <h2 class="section-header" style="color: #333;">¿Por qué estudiar con nosotros?</h2>
+      <p class="text-center text-gray-700 mb-8 px-4">
+        En nuestra institución, nos comprometemos a ofrecerte una formación académica de calidad, impulsando tu
+        desarrollo profesional y personal a través de actividades extracurriculares, programas internacionales, y un
+        sólido acompañamiento docente.
+      </p>
 
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
 
-          <!-- Calidad Educativa -->
-          <div class="icon-box">
-            <img src="./img/educacion.png" alt="Calidad educativa">
-            <h4>Calidad Educativa</h4>
-            <p>Con un enfoque en la excelencia académica, nuestros planes de estudio están diseñados para cumplir con
-              los más altos estándares internacionales.</p>
-          </div>
+        <!-- Calidad Educativa -->
+        <div class="icon-box">
+          <img src="./img/educacion.png" alt="Calidad educativa">
+          <h4>Calidad Educativa</h4>
+          <p>Con un enfoque en la excelencia académica, nuestros planes de estudio están diseñados para cumplir con
+            los más altos estándares internacionales.</p>
+        </div>
 
-          <!-- Vida Estudiantil -->
-          <div class="icon-box">
-            <img src="./img/leyendo.png" alt="Vida estudiantil">
-            <h4>Vida Estudiantil</h4>
-            <p>Participa en actividades extracurriculares, eventos culturales y deportivos, creando una experiencia
-              educativa integral y equilibrada.</p>
-          </div>
+        <!-- Vida Estudiantil -->
+        <div class="icon-box">
+          <img src="./img/leyendo.png" alt="Vida estudiantil">
+          <h4>Vida Estudiantil</h4>
+          <p>Participa en actividades extracurriculares, eventos culturales y deportivos, creando una experiencia
+            educativa integral y equilibrada.</p>
+        </div>
 
-          <!-- Becas y apoyos
+        <!-- Becas y apoyos
           <div class="icon-box">
             <img src="https://example.com/icon5.png" alt="Becas y apoyos">
             <h4>Becas y Apoyos</h4>
@@ -344,15 +410,15 @@
               que destacan en deportes y cultura.</p>
           </div> -->
 
-          <!-- Responsabilidad Social -->
-          <div class="icon-box">
-            <img src="./img/social.png" alt="Responsabilidad social">
-            <h4>Responsabilidad Social</h4>
-            <p>Fomentamos el compromiso con la sociedad a través de iniciativas de impacto social que contribuyen al
-              bienestar de las comunidades.</p>
-          </div>
+        <!-- Responsabilidad Social -->
+        <div class="icon-box">
+          <img src="./img/social.png" alt="Responsabilidad social">
+          <h4>Responsabilidad Social</h4>
+          <p>Fomentamos el compromiso con la sociedad a través de iniciativas de impacto social que contribuyen al
+            bienestar de las comunidades.</p>
         </div>
-      </section>
+      </div>
+    </section>
 
     </main>
 
@@ -370,14 +436,14 @@
           <p class="text-sm text-gray-500">17 Mayo 2024</p>
           <p class="text-gray-600 mt-2">Celebramos 30 años de excelencia académica con eventos especiales para toda la
             comunidad escolar.</p>
-          <a href="#" class="text-blue-600 hover:text-blue-800 mt-2 inline-block">Leer más →</a>
+          <a href="index.html" class="text-blue-600 hover:text-blue-800 mt-2 inline-block">Leer más →</a>
         </div>
         <div class="bg-white shadow rounded-lg p-4">
           <h3 class="text-lg font-semibold">Cartelera Cultural Universitaria</h3>
           <p class="text-sm text-gray-500">15 Mayo 2024</p>
           <p class="text-gray-600 mt-2">Descubre las actividades culturales programadas para este semestre en nuestra
             institución.</p>
-          <a href="#" class="text-blue-600 hover:text-blue-800 mt-2 inline-block">Leer más →</a>
+          <a href="index.html" class="text-blue-600 hover:text-blue-800 mt-2 inline-block">Leer más →</a>
         </div>
       </div>
     </section>
@@ -438,7 +504,16 @@
 
     hamburgerBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('visible'); // Cambié para manejar la visibilidad del menú
     });
+
+    // Submenu toggle functionality for mobile
+    function toggleSubmenu(button) {
+      const submenu = button.nextElementSibling;
+      const arrow = button.querySelector('svg');
+      submenu.classList.toggle('hidden');
+      arrow.classList.toggle('rotate-180');
+    }
   </script>
 
 </body>
