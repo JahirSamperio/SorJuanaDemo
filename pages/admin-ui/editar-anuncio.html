@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestión de Galería - Panel de Administración</title>
+  <title>Editar Anuncio - Panel de Administración</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     .icon-box {
@@ -97,77 +98,42 @@
 
   <!-- Main Content -->
   <main class="flex-grow container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">Gestión de Galería</h1>
+    <h1 class="text-3xl font-bold mb-6">Editar Anuncio</h1>
 
-    <div class="bg-white shadow rounded-lg p-6 mb-8">
-      <h2 class="text-xl font-semibold mb-4">Subir Nuevo Elemento</h2>
-      <form action="/upload-media" method="post" enctype="multipart/form-data">
-        <div class="mb-4">
-          <label for="media" class="block text-sm font-medium text-gray-700">Seleccionar foto o video</label>
-          <input type="file" id="media" name="media" accept="image/*,video/*" required
-            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-        </div>
-        <div class="mb-4">
-          <label for="title" class="block text-sm font-medium text-gray-700">Título</label>
+    <div class="bg-white shadow rounded-lg overflow-hidden">
+      <form id="edit-announcement-form" class="p-6 space-y-6">
+        <div>
+          <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Título</label>
           <input type="text" id="title" name="title" required
-            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-        </div>
-        <div class="mb-4">
-          <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
-          <textarea id="description" name="description" rows="3"
-            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
         </div>
         <div>
+          <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Contenido</label>
+          <textarea id="content" name="content" rows="10"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+        </div>
+        <div>
+          <label for="publish-date" class="block text-sm font-medium text-gray-700 mb-1">Fecha de publicación</label>
+          <input type="datetime-local" id="publish-date" name="publish-date"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div class="flex justify-end">
           <button type="submit"
             class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            Subir a la Galería
+            Guardar cambios
           </button>
         </div>
       </form>
     </div>
 
-    <div class="bg-white shadow rounded-lg p-6">
-      <h2 class="text-xl font-semibold mb-4">Elementos de la Galería</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="relative group">
-          <img src="/placeholder.svg?height=200&width=200" alt="Imagen de ejemplo" class="w-full h-48 object-cover rounded-md">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <button class="text-white bg-red-600 hover:bg-red-700 font-bold py-2 px-4 rounded">Eliminar</button>
-          </div>
-          <p class="mt-2 text-center">Título de la imagen</p>
-        </div>
-        <div class="relative group">
-          <video class="w-full h-48 object-cover rounded-md">
-            <source src="ejemplo_video.mp4" type="video/mp4">
-            Tu navegador no soporta el tag de video.
-          </video>
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <button class="text-white bg-red-600 hover:bg-red-700 font-bold py-2 px-4 rounded">Eliminar</button>
-          </div>
-          <p class="mt-2 text-center">Título del video</p>
-        </div>
+    <div class="mt-8 bg-white shadow rounded-lg overflow-hidden">
+      <div class="bg-gray-50 px-6 py-3">
+        <h2 class="text-lg font-medium text-gray-900">Vista previa</h2>
       </div>
-    </div>
-    <div class="bg-white shadow rounded-lg p-6">
-      <h2 class="text-xl font-semibold mb-4">Elementos del Banner principal</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="relative group">
-          <img src="/placeholder.svg?height=200&width=200" alt="Imagen de ejemplo" class="w-full h-48 object-cover rounded-md">
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <button class="text-white bg-red-600 hover:bg-red-700 font-bold py-2 px-4 rounded">Eliminar</button>
-          </div>
-          <p class="mt-2 text-center">Título de la imagen</p>
-        </div>
-        <div class="relative group">
-          <video class="w-full h-48 object-cover rounded-md">
-            <source src="ejemplo_video.mp4" type="video/mp4">
-            Tu navegador no soporta el tag de video.
-          </video>
-          <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <button class="text-white bg-red-600 hover:bg-red-700 font-bold py-2 px-4 rounded">Eliminar</button>
-          </div>
-          <p class="mt-2 text-center">Título del video</p>
-        </div>
+      <div class="p-6">
+        <h3 id="preview-title" class="text-xl font-bold mb-2"></h3>
+        <div id="preview-content" class="prose max-w-none"></div>
+        <p id="preview-date" class="text-sm text-gray-500 mt-2"></p>
       </div>
     </div>
   </main>
@@ -205,6 +171,24 @@
   </footer>
 
   <script>
+    // Initialize TinyMCE
+    tinymce.init({
+      selector: '#content',
+      height: 300,
+      menubar: false,
+      plugins: [
+        'advlist autolink lists link image charmap print preview anchor',
+        'searchreplace visualblocks code fullscreen',
+        'insertdatetime media table paste code help wordcount'
+      ],
+      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+      setup: function(editor) {
+        editor.on('change', function() {
+          updatePreview();
+        });
+      }
+    });
+
     // Toggle mobile menu
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -225,8 +209,35 @@
 
     logoutButton.addEventListener('click', logout);
     mobileLogoutButton.addEventListener('click', logout);
-  </script>
 
+    // Update preview
+    function updatePreview() {
+      const title = document.getElementById('title').value;
+      const content = tinymce.get('content').getContent();
+      const publishDate = document.getElementById('publish-date').value;
+
+      document.getElementById('preview-title').textContent = title;
+      document.getElementById('preview-content').innerHTML = content;
+      document.getElementById('preview-date').textContent = `Fecha de publicación: ${new Date(publishDate).toLocaleString()}`;
+    }
+
+    // Form submission
+    document.getElementById('edit-announcement-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Here you would typically send the form data to the server
+      alert('Cambios guardados');
+    });
+
+    // Initial preview update
+    document.getElementById('title').addEventListener('input', updatePreview);
+    document.getElementById('publish-date').addEventListener('input', updatePreview);
+
+    // Set initial values
+    document.getElementById('title').value = 'Ejemplo de Anuncio';
+    tinymce.get('content').setContent('<p>Este es un ejemplo de contenido de anuncio con <strong>texto enriquecido</strong>. Puedes editarlo utilizando el editor a continuación.</p>');
+    document.getElementById('publish-date').value = '2024-05-20T10:00';
+    updatePreview();
+  </script>
 </body>
 
 </html>
