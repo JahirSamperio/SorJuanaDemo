@@ -49,6 +49,115 @@
         display: none;
       }
     }
+
+    .photo-strip {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 20px 0;
+    }
+
+    .photo-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .photo-item {
+      flex: 0 0 auto;
+      width: 250px;
+      height: 180px;
+      margin-right: 20px;
+      scroll-snap-align: start;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .photo-strip-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-strip {
+      transition: transform 0.3s ease;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+    }
+
+    .nav-arrow-left {
+      left: 10px;
+    }
+
+    .nav-arrow-right {
+      right: 10px;
+    }
   </style>
 </head>
 
@@ -84,6 +193,7 @@
                 <a href="/pages/acerca-nosotros/trasfondo.html"
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Trasfondo de la
                   institución</a>
+
                 <a href="/pages/acerca-nosotros/trasfondo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   role="menuitem">Identidad</a>
                 <a href="/pages/acerca-nosotros/trasfondo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Modelo
@@ -91,6 +201,7 @@
                 <a href="/pages/acerca-nosotros/trasfondo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   role="menuitem">Directorio</a>
                 <a href="/pages/acerca-nosotros/ubicacion.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+
                   role="menuitem">Ubicación</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Visita
                   Virtual</a>
@@ -138,6 +249,7 @@
             </svg>
           </button>
         </div>
+
       </div>
     </div>
 
@@ -170,6 +282,7 @@
             <a href="/pages/acerca-nosotros/ubicacion.html"
               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Ubicación</a>
             <a href="/pages/acerca-nosotros/trasfondo.html"
+
               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Visita
               Virtual</a>
           </div>
@@ -354,7 +467,46 @@
       </div>
     </section>
 
-    </main>
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Galería</h2>
+        <div class="photo-strip-container">
+          <div class="nav-arrow nav-arrow-left" onclick="scrollPhotos('left')">&#10094;</div>
+          <div class="photo-strip">
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 1" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 2" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 3" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 4" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 5" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 6" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 7" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 8" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 9" onclick="openModal(this.src)">
+            </div>
+            <div class="photo-item"><img src="/api/placeholder/500/360" alt="Imagen 10" onclick="openModal(this.src)">
+            </div>
+          </div>
+          <div class="nav-arrow nav-arrow-right" onclick="scrollPhotos('right')">&#10095;</div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- Modal Mejorado para la imagen ampliada -->
+    <div id="imageModal" class="modal" style="display: none;">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage">
+    </div>
 
     <!-- News Section -->
     <section class="mb-8">
@@ -479,6 +631,41 @@
 
     // Set initial active tab
     tabButtons[0].click();
+
+    function openModal(imgSrc) {
+      var modal = document.getElementById("imageModal");
+      var modalImg = document.getElementById("modalImage");
+      modal.style.display = "flex";
+      modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("imageModal");
+      modal.style.display = "none";
+    }
+
+    // Cerrar el modal al hacer clic fuera de la imagen
+    window.onclick = function (event) {
+      var modal = document.getElementById("imageModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    function scrollPhotos(direction) {
+      const strip = document.querySelector('.photo-strip');
+      const scrollAmount = 300; // Ajuste según sea necesario
+      if (direction === 'left') {
+        strip.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        strip.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // Asegurarse de que el modal no se abra automáticamente
+    window.onload = function () {
+      document.getElementById("imageModal").style.display = "none";
+    }
   </script>
 
 </body>
