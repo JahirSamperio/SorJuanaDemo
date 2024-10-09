@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docencia - EPSJIC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+</head>
+
+<body class="flex flex-col min-h-screen bg-gray-50">
+    <!-- Navegación principal -->
+    <nav class="bg-white shadow-md relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <a href="/index.html" class="font-semibold text-gray-800">
+                        <img src="/img/LogoSor.png" alt="EPSJIC" class="h-10 brightness-0 invert">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../../index.html"
+                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Acerca de
+                        Nosotros</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Institución</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+                        <i class="lucide lucide-menu h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="../../index.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Inicio</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Acerca
+                    de Nosotros</a>
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Institución</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow max-w-6xl w-full mx-auto p-4">
+        <h1 class="text-2xl  md:text-3xl font-bold text-[#0066CC] mb-6">Programa académico</h1>
+
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow mb-6 overflow-x-auto">
+            <div class="flex flex-wrap items-center justify-around p-2" id="tabsList">
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="home">
+                    <span>Objetivo</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="scholarships">
+                    <span>Plan de estudios</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="calendars">
+                    <span>Metodología</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="tabContents" class="mb-8">
+            <!-- Home Tab -->
+            <div class="tab-content" id="homeTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC]">Documento PDF Simulado - Inicio</h2>
+                        <div class="flex space-x-2">
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-zoom-in"></i>
+                            </button>
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-zoom-out"></i>
+                            </button>
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="border-2 border-gray-300 rounded-lg p-4 md:p-8 bg-white shadow-inner overflow-auto h-[calc(100vh-300px)]">
+                        <div class="max-w-3xl mx-auto space-y-4">
+                            <h3 class="text-2xl font-bold mb-4">Reglamento de Infraestructura - Inicio</h3>
+                            <p class="text-sm md:text-base">
+                                1. Uso de Instalaciones: Todos los estudiantes deben hacer uso responsable de las
+                                instalaciones académicas, artísticas y deportivas.
+                            </p>
+                            <!-- More content... -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scholarships Tab -->
+            <div class="tab-content hidden" id="scholarshipsTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC]">Documento PDF Simulado</h2>
+                        <div class="flex space-x-2">
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-zoom-in"></i>
+                            </button>
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-zoom-out"></i>
+                            </button>
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="border-2 border-gray-300 rounded-lg p-4 md:p-8 bg-white shadow-inner overflow-auto h-[60vh]">
+                        <div class="max-w-3xl mx-auto space-y-4">
+                            <h3 class="text-2xl font-bold mb-4">Reglamento de Infraestructura</h3>
+                            <p class="text-sm md:text-base">
+                                1. Uso de Instalaciones: Todos los estudiantes deben hacer uso responsable de las
+                                instalaciones académicas, artísticas y deportivas.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                2. Horarios: Se deben respetar los horarios establecidos para cada instalación. El uso
+                                fuera de horario debe ser autorizado por la administración.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                3. Cuidado del Equipo: Los estudiantes son responsables del cuidado del equipo y
+                                materiales proporcionados en las instalaciones.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                4. Reservaciones: Para el uso de ciertas instalaciones, como el laboratorio de cómputo o
+                                áreas deportivas, puede ser necesario hacer una reservación previa.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                5. Conducta: Se espera una conducta apropiada en todas las instalaciones. Cualquier
+                                comportamiento disruptivo puede resultar en la pérdida de privilegios de uso.
+                            </p>
+                            <!-- Más contenido del documento... -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendars Tab -->
+            <div class="tab-content hidden" id="calendarsTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC]">Documento PDF Simulado</h2>
+                        <div class="flex space-x-2">
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-zoom-in"></i>
+                            </button>
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-zoom-out"></i>
+                            </button>
+                            <button class="p-2 bg-gray-200 rounded hover:bg-gray-300">
+                                <i class="lucide lucide-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="border-2 border-gray-300 rounded-lg p-4 md:p-8 bg-white shadow-inner overflow-auto h-[60vh]">
+                        <div class="max-w-3xl mx-auto space-y-4">
+                            <h3 class="text-2xl font-bold mb-4">Reglamento de Infraestructura</h3>
+                            <p class="text-sm md:text-base">
+                                1. Uso de Instalaciones: Todos los estudiantes deben hacer uso responsable de las
+                                instalaciones académicas, artísticas y deportivas.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                2. Horarios: Se deben respetar los horarios establecidos para cada instalación. El uso
+                                fuera de horario debe ser autorizado por la administración.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                3. Cuidado del Equipo: Los estudiantes son responsables del cuidado del equipo y
+                                materiales proporcionados en las instalaciones.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                4. Reservaciones: Para el uso de ciertas instalaciones, como el laboratorio de cómputo o
+                                áreas deportivas, puede ser necesario hacer una reservación previa.
+                            </p>
+                            <p class="text-sm md:text-base">
+                                5. Conducta: Se espera una conducta apropiada en todas las instalaciones. Cualquier
+                                comportamiento disruptivo puede resultar en la pérdida de privilegios de uso.
+                            </p>
+                            <!-- Más contenido del documento... -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Content similar to Home Tab, but for Calendars -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-semibold">Universidad Autónoma del Estado de Hidalgo (UAEH)</h3>
+                    <p class="text-sm">© 2024 Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#facebook"></use>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#twitter"></use>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/uaeh" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#instagram"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`${tabName}Tab`).classList.remove('hidden');
+            });
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
