@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es h-full">
 
 <head>
     <meta charset="UTF-8">
@@ -7,297 +7,520 @@
     <title>Portal de Alumnos - EPSJIC</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .group:hover .submenu,
+        .group:focus-within .submenu {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .submenu {
+                position: static;
+                box-shadow: none;
+            }
+
+            .tab-scroll {
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .tab-scroll::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body class="min-h-screen bg-gray-50">
-    <!-- Navegación principal -->
-    <nav class="bg-white shadow-md relative">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-2">
-                    <a href="/index.html" class="font-semibold text-gray-800">
-                        <img src="/img/LogoSor.png" alt="EPSJIC" class="h-10 brightness-0 invert">
-                      </a>
+
+                    <svg class="w-8 h-8 text-blue-600">
+                        <use xlink:href="#graduation-cap" />
+                    </svg>
+                    <a href="index.html" class="font-semibold text-gray-800">
+                        <img src="../../img/LogoSor.png" alt="Logo" class="h-8">
+                    </a>
+
                 </div>
-                <div class="hidden md:flex space-x-8">
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
                     <a href="../../index.html"
                         class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
-                    <a href="#"
-                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Acerca de
-                        Nosotros</a>
-                    <a href="#"
-                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Institución</a>
+
+                    <div class="relative group">
+                        <button
+                            class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            Acerca de Nosotros
+                            <svg class="ml-1 h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            class="submenu absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div class="py-1" role="menu" aria-orientation="vertical">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Trasfondo de la institución</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Identidad</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Modelo Educativo</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Directorio</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Ubicación</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Visita Virtual</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button
+                            class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            Institución
+                            <svg class="ml-1 h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            class="submenu absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div class="py-1" role="menu" aria-orientation="vertical">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Reglamentos</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Infraestructura</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Programa académico</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Estructura Orgánica</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
-                        <i class="lucide lucide-menu h-6 w-6"></i>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <button
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+                        Alumnos</button>
+                    <a href="./pages/crear-aviso.html"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+                        Administrativo</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="hamburger-btn" class="focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
             </div>
         </div>
+
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="../../index.html"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Inicio</a>
-                <a href="#"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Acerca
-                    de Nosotros</a>
-                <a href="#"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Institución</a>
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Inicio</a>
+
+                <div class="space-y-1">
+                    <button onclick="toggleSubmenu(this)"
+                        class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 flex justify-between items-center">
+                        Acerca de Nosotros
+                        <svg class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden pl-4 space-y-1">
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Trasfondo
+                            de la institución</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Identidad</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Modelo
+                            Educativo</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Directorio</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Ubicación</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Visita
+                            Virtual</a>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <button onclick="toggleSubmenu(this)"
+                        class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 flex justify-between items-center">
+                        Institución
+                        <svg class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden pl-4 space-y-1">
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Reglamentos</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Infraestructura</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Programa
+                            académico</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Estructura
+                            Orgánica</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="px-2 space-y-1">
+                    <button
+                        class="w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+                        Alumnos</button>
+                    <a href="./pages/crear-aviso.html"
+                        class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200 text-center">Portal
+                        Administrativo</a>
+                </div>
             </div>
         </div>
     </nav>
+    <main class="flex-grow">
 
-    <!-- Contenido principal -->
-    <div class="max-w-6xl mx-auto p-4">
-        <h1 class="text-2xl text-center md:text-3xl font-bold text-[#0066CC] mb-6">Portal de Alumnos</h1>
+        <!-- Contenido principal -->
+        <div class="max-w-6xl mx-auto p-4">
+            <h1 class="text-2xl text-center md:text-3xl font-bold text-[#0066CC] mb-6">Portal de Alumnos</h1>
 
-        <!-- Tabs -->
-        <div class="bg-white rounded-lg shadow mb-6 overflow-x-auto ">
-            <div class="flex flex-wrap items-center justify-around p-2" id="tabsList">
-                <button
-                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
-                    data-tab="home">
-                    <span>Inicio</span>
-                </button>
-                <button
-                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
-                    data-tab="scholarships">
-                    <span>Convocatorias</span>
-                </button>
-                <button
-                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
-                    data-tab="calendars">
-                    <span>Calendarios</span>
-                </button>
-                <button
-                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
-                    data-tab="grades">
-                    <span>Consulta de Boleta</span>
-                </button>
-                <button
-                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
-                    data-tab="schedules">
-                    <span>Horarios</span>
-                </button>
-                <button
-                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
-                    data-tab="support">
-                    <span>Programa Institucional de Apoyo</span>
-                </button>
+            <!-- Tabs -->
+            <div class="bg-white rounded-lg shadow mb-6 overflow-x-auto ">
+                <div class="flex flex-wrap items-center justify-around p-2" id="tabsList">
+                    <button
+                        class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                        data-tab="home">
+                        <span>Inicio</span>
+                    </button>
+                    <button
+                        class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                        data-tab="scholarships">
+                        <span>Convocatorias</span>
+                    </button>
+                    <button
+                        class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                        data-tab="calendars">
+                        <span>Calendarios</span>
+                    </button>
+                    <button
+                        class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                        data-tab="grades">
+                        <span>Consulta de Boleta</span>
+                    </button>
+                    <button
+                        class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                        data-tab="schedules">
+                        <span>Horarios</span>
+                    </button>
+                    <button
+                        class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                        data-tab="support">
+                        <span>Programa Institucional de Apoyo</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="tabContents">
+                <!-- Home Tab -->
+                <div class="tab-content" id="homeTab">
+                    <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                        <h2 class="text-xl md:text-2xl text-center font-bold text-[#0066CC] mb-4">Bienvenid@ Alumn@</h2>
+                        <div class="flex justify-center mb-4">
+                            <img src="../../img/alumnos1.png" alt="Estudiantes"
+                                class="rounded-lg max-w-full md:max-w-md w-full h-auto object-cover">
+                        </div>
+                        <p class="text-gray-600 text-sm md:text-base">
+                            Aquí encontrarás información relevante sobre inscripción, reingreso, calificaciones y demás
+                            servicios que requieras.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Scholarships Tab -->
+                <div class="tab-content hidden" id="scholarshipsTab">
+                    <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Convocatorias de Becas</h2>
+                        <div class="space-y-4">
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="text-lg font-semibold">Becas Institucionales</h3>
+                                <p class="text-sm md:text-base">Información sobre becas ofrecidas por la institución.
+                                </p>
+                                <button
+                                    class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                    más</button>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="text-lg font-semibold">Becas Federales</h3>
+                                <p class="text-sm md:text-base">Información sobre becas ofrecidas por el gobierno
+                                    federal.
+                                </p>
+                                <button
+                                    class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                    más</button>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="text-lg font-semibold">Becas de Excelencia</h3>
+                                <p class="text-sm md:text-base">Información sobre becas para estudiantes destacados.</p>
+                                <button
+                                    class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                    más</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendars Tab -->
+                <div class="tab-content hidden" id="calendarsTab">
+                    <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Calendarios</h2>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    class="calendar-tab px-3 py-2 bg-blue-600 text-white rounded text-sm md:text-base"
+                                    data-calendar="uaeh">UAEH</button>
+                                <button
+                                    class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                    data-calendar="first">Primer Parcial</button>
+                                <button
+                                    class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                    data-calendar="second">Segundo Parcial</button>
+                                <button
+                                    class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                    data-calendar="third">Tercer Parcial</button>
+                                <button
+                                    class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
+                                    data-calendar="activities">Actividades del Semestre</button>
+                            </div>
+                            <div id="calendarContent" class="border rounded-lg p-4">
+                                <!-- Calendar content will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grades Tab -->
+                <div class="tab-content hidden" id="gradesTab">
+                    <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Consulta de Boleta</h2>
+                        <form id="gradesForm">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700">Número de Cuenta</label>
+                                <input type="text"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                    placeholder="Ingrese su número de cuenta">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+                                <input type="password"
+                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                                    placeholder="Ingrese su contraseña">
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ingresar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Schedules Tab -->
+                <div class="tab-content hidden" id="schedulesTab">
+                    <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Horarios</h2>
+                        <div class="space-y-4">
+                            <select id="scheduleType"
+                                class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-sm md:text-base">
+                                <option value="">Seleccione un tipo de horario</option>
+                                <option value="reading">Periodos de Lectura</option>
+                                <option value="labs">Laboratorios y Centros</option>
+                                <option value="classes">Clases Regulares</option>
+                                <option value="propaedeutic">Curso Propedéutico</option>
+                                <option value="attention">Atención al Estudiante</option>
+                            </select>
+                            <div class="border rounded-lg p-4 overflow-x-auto">
+                                <h3 class="font-semibold mb-2 text-sm md:text-base">Horario</h3>
+                                <table class="w-full text-sm md:text-base">
+                                    <thead>
+                                        <tr>
+                                            <th class="border p-2">Hora</th>
+                                            <th class="border p-2">Lunes</th>
+                                            <th class="border p-2">Martes</th>
+                                            <th class="border p-2">Miércoles</th>
+                                            <th class="border p-2">Jueves</th>
+                                            <th class="border p-2">Viernes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Aquí irían las filas del horario -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Tab -->
+                <div class="tab-content hidden" id="supportTab">
+                    <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                        <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Programa Institucional de Apoyo
+                        </h2>
+
+                        <div class="space-y-4">
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="text-lg font-semibold">Tutorías</h3>
+                                <p class="text-sm md:text-base">Información sobre el programa de tutorías y cómo acceder
+                                    a
+                                    él.</p>
+                                <button
+                                    class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Solicitar
+                                    Tutoría</button>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="text-lg font-semibold">Asesorías Académicas</h3>
+                                <p class="text-sm md:text-base">Detalles sobre las asesorías disponibles para diferentes
+                                    materias.</p>
+                                <button
+                                    class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
+                                    Horarios de Asesorías</button>
+                            </div>
+                            <div class="p-4 border rounded-lg">
+                                <h3 class="text-lg font-semibold">Orientación Educativa</h3>
+                                <p class="text-sm md:text-base">Servicios de orientación para apoyar tu desarrollo
+                                    académico
+                                    y personal.</p>
+                                <button
+                                    class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Agendar
+                                    Cita</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- Tab Contents -->
-        <div id="tabContents">
-            <!-- Home Tab -->
-            <div class="tab-content" id="homeTab">
-                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl text-center font-bold text-[#0066CC] mb-4">Bienvenid@ Alumn@</h2>
-                    <div class="flex justify-center mb-4">
-                        <img src="../../img/alumnos1.png" alt="Estudiantes"
-                            class="rounded-lg max-w-full md:max-w-md w-full h-auto object-cover">
-                    </div>
-                    <p class="text-gray-600 text-sm md:text-base">
-                        Aquí encontrarás información relevante sobre inscripción, reingreso, calificaciones y demás
-                        servicios que requieras.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Scholarships Tab -->
-            <div class="tab-content hidden" id="scholarshipsTab">
-                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Convocatorias de Becas</h2>
-                    <div class="space-y-4">
-                        <div class="p-4 border rounded-lg">
-                            <h3 class="text-lg font-semibold">Becas Institucionales</h3>
-                            <p class="text-sm md:text-base">Información sobre becas ofrecidas por la institución.</p>
-                            <button
-                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
-                                más</button>
-                        </div>
-                        <div class="p-4 border rounded-lg">
-                            <h3 class="text-lg font-semibold">Becas Federales</h3>
-                            <p class="text-sm md:text-base">Información sobre becas ofrecidas por el gobierno federal.
-                            </p>
-                            <button
-                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
-                                más</button>
-                        </div>
-                        <div class="p-4 border rounded-lg">
-                            <h3 class="text-lg font-semibold">Becas de Excelencia</h3>
-                            <p class="text-sm md:text-base">Información sobre becas para estudiantes destacados.</p>
-                            <button
-                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
-                                más</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Calendars Tab -->
-            <div class="tab-content hidden" id="calendarsTab">
-                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Calendarios</h2>
-                    <div class="space-y-4">
-                        <div class="flex flex-wrap gap-2">
-                            <button class="calendar-tab px-3 py-2 bg-blue-600 text-white rounded text-sm md:text-base"
-                                data-calendar="uaeh">UAEH</button>
-                            <button
-                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
-                                data-calendar="first">Primer Parcial</button>
-                            <button
-                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
-                                data-calendar="second">Segundo Parcial</button>
-                            <button
-                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
-                                data-calendar="third">Tercer Parcial</button>
-                            <button
-                                class="calendar-tab px-3 py-2 bg-gray-200 text-gray-700 rounded text-sm md:text-base"
-                                data-calendar="activities">Actividades del Semestre</button>
-                        </div>
-                        <div id="calendarContent" class="border rounded-lg p-4">
-                            <!-- Calendar content will be inserted here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Grades Tab -->
-            <div class="tab-content hidden" id="gradesTab">
-                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Consulta de Boleta</h2>
-                    <form id="gradesForm">
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700">Número de Cuenta</label>
-                            <input type="text"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                                placeholder="Ingrese su número de cuenta">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-700">Contraseña</label>
-                            <input type="password"
-                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-                                placeholder="Ingrese su contraseña">
-                        </div>
-                        <button type="submit"
-                            class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ingresar</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Schedules Tab -->
-            <div class="tab-content hidden" id="schedulesTab">
-                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Horarios</h2>
-                    <div class="space-y-4">
-                        <select id="scheduleType"
-                            class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-sm md:text-base">
-                            <option value="">Seleccione un tipo de horario</option>
-                            <option value="reading">Periodos de Lectura</option>
-                            <option value="labs">Laboratorios y Centros</option>
-                            <option value="classes">Clases Regulares</option>
-                            <option value="propaedeutic">Curso Propedéutico</option>
-                            <option value="attention">Atención al Estudiante</option>
-                        </select>
-                        <div class="border rounded-lg p-4 overflow-x-auto">
-                            <h3 class="font-semibold mb-2 text-sm md:text-base">Horario</h3>
-                            <table class="w-full text-sm md:text-base">
-                                <thead>
-                                    <tr>
-                                        <th class="border p-2">Hora</th>
-                                        <th class="border p-2">Lunes</th>
-                                        <th class="border p-2">Martes</th>
-                                        <th class="border p-2">Miércoles</th>
-                                        <th class="border p-2">Jueves</th>
-                                        <th class="border p-2">Viernes</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Aquí irían las filas del horario -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Support Tab -->
-            <div class="tab-content hidden" id="supportTab">
-                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Programa Institucional de Apoyo</h2>
-
-                    <div class="space-y-4">
-                        <div class="p-4 border rounded-lg">
-                            <h3 class="text-lg font-semibold">Tutorías</h3>
-                            <p class="text-sm md:text-base">Información sobre el programa de tutorías y cómo acceder a
-                                él.</p>
-                            <button
-                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Solicitar
-                                Tutoría</button>
-                        </div>
-                        <div class="p-4 border rounded-lg">
-                            <h3 class="text-lg font-semibold">Asesorías Académicas</h3>
-                            <p class="text-sm md:text-base">Detalles sobre las asesorías disponibles para diferentes
-                                materias.</p>
-                            <button
-                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Ver
-                                Horarios de Asesorías</button>
-                        </div>
-                        <div class="p-4 border rounded-lg">
-                            <h3 class="text-lg font-semibold">Orientación Educativa</h3>
-                            <p class="text-sm md:text-base">Servicios de orientación para apoyar tu desarrollo académico
-                                y personal.</p>
-                            <button
-                                class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm md:text-base">Agendar
-                                Cita</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
     <!-- Footer -->
+    <!-- <footer class="bg-gray-800 text-white py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-semibold">Universidad Autónoma del Estado de Hidalgo (UAEH)</h3>
+                    <p class="text-sm">© 2024 Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#facebook"></use>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#twitter"></use>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/uaeh" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#instagram"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer> -->
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        // Mobile menu toggle functionality
+        const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        mobileMenuButton.addEventListener('click', () => {
+        hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
+        // Submenu toggle functionality for mobile
+        function toggleSubmenu(button) {
+            const submenu = button.nextElementSibling;
+            const arrow = button.querySelector('svg');
+            submenu.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
         // Tab functionality
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
+        // const tabButtons = document.querySelectorAll('.tab-button');
+        // const tabContents = document.querySelectorAll('.tab-content');
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabName = button.getAttribute('data-tab');
-                tabContents.forEach(content => {
-                    content.classList.add('hidden');
+        // tabButtons.forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         const tabName = button.getAttribute('data-tab');
+
+        //         // Show selected tab content
+        //         tabContents.forEach(content => {
+        //             content.classList.remove('active');
+        //         });
+        //         document.getElementById(`${tabName}Tab`).classList.add('active');
+        //     });
+        // });
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Set initial active tab
+            document.querySelector('.tab-button[data-tab="home"]').classList.add('active');
+            document.getElementById('homeTab').classList.add('active');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.getAttribute('data-tab');
+
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(`${tabName}Tab`).classList.add('active');
                 });
-                document.getElementById(`${tabName}Tab`).classList.remove('hidden');
             });
         });
 
-        // Calendar functionality
-        const calendarTabs = document.querySelectorAll('.calendar-tab');
-        const calendarContent = document.getElementById('calendarContent');
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-        calendarTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const calendarType = tab.getAttribute('data-calendar');
-                calendarTabs.forEach(t => t.classList.remove('bg-blue-600', 'text-white'));
-                tab.classList.add('bg-blue-600', 'text-white');
-
-                // Here you would typically load the appropriate calendar content
-                calendarContent.innerHTML = `<p>Calendario para ${calendarType}</p>`;
-            });
-        });
 
         // Grades form submission
         const gradesForm = document.getElementById('gradesForm');
@@ -306,37 +529,9 @@
             // Here you would typically handle the form submission
             alert('Formulario de calificaciones enviado');
         });
-
-        // Initialize Lucide icons
-        lucide.createIcons();
+        ;
     </script>
-    <footer class="bg-gray-800 text-white py-8">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-semibold">Universidad Autónoma del Estado de Hidalgo (UAEH)</h3>
-                        <p class="text-sm">© 2024 Todos los derechos reservados.</p>
-                    </div>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6">
-                                <use xlink:href="#facebook"></use>
-                            </svg>
-                        </a>
-                        <a href="https://twitter.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6">
-                                <use xlink:href="#twitter"></use>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/uaeh" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6">
-                                <use xlink:href="#instagram"></use>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+
 </body>
 
 </html>
