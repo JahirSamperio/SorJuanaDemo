@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal para Padres - Prepa Sor Juana</title>
+    <title>Aspirantes - Prepa Sor Juana</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -18,17 +18,7 @@
         .tab-content.active {
             display: block;
             opacity: 1;
-            animation: fadeIn 0.5s ease-in-out;
         }
-
-        .tab-button {
-            position: relative;
-            transition: all 0.3s;
-        }
-        .tab-button.active {
-        color: #0066CC;
-        background-color: #EBF5FF;
-    }
 
         .submenu {
             display: none;
@@ -62,7 +52,7 @@
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col bg-gray-50" >
+<body class="min-h-screen flex flex-col bg-gray-50">
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-md">
         <div class="max-w-6xl mx-auto px-4">
@@ -222,22 +212,21 @@
             </div>
         </div>
     </nav>
-    <main class="flex-grow">
     <!-- Contenido principal -->
     <div class="flex-grow max-w-6xl mx-auto p-4">
-        <h1 class="text-2xl md:text-3xl font-bold text-[#0066CC] mb-6">Portal para Padres</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-[#0066CC] mb-6">Aspirantes</h1>
         <!-- Tabs -->
         <div class="bg-white rounded-lg shadow mb-6 overflow-x-auto ">
             <div class="flex flex-wrap items-center justify-around p-2" id="tabsList">
                 <button
                     class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 rounded-md"
                     data-tab="about">
-                    <span>Sobre Nosotros</span>
+                    <span>Acerca de</span>
                 </button>
                 <button
                     class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 rounded-md"
                     data-tab="grades">
-                    <span>Consulta de Boleta</span>
+                    <span>Proceso de Admisión</span>
                 </button>
             </div>
         </div>
@@ -246,92 +235,125 @@
         <div id="tabContents">
             <div class="tab-content active" id="aboutTab">
                 <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl font-bold text-center text-[#0066CC] mb-4">Prepa Sor Juana</h2>
+                    <h2 class="text-xl md:text-2xl font-bold text-center text-[#0066CC] mb-4">Bienvenido a nuestra
+                        preparatoria</h2>
                     <p class="text-gray-600 text-sm md:text-base">
-                        Somos la mejor oferta educativa, ya que contamos con el respaldo y prestigio de la Universidad
-                        Autónoma del Estado de Hidalgo.
+                        Si estas por concluir o haz concluido tus estudios de secundaria, entonces tú puedes ingresar a
+                        la Preparatoria 'Sor Juana Inés de la Cruz'
                     </p>
                     <div class="flex justify-center my-4">
                         <img src="../../img/imgPadres.jpg" alt="Imagen padres Prepa Sor Juana"
                             class="rounded-lg max-w-full md:max-w-md w-full h-auto object-cover">
                     </div>
-                    <div class="mt-6">
-                        <h3 class="text-lg font-semibold text-[#0066CC]">Nuestra Oferta Educativa:</h3>
-                        <ul class="mt-4 space-y-2">
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Formación integral basada en valores
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Ambiente de cordialidad, respeto y responsabilidad
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Certificado reconocido por la UAEH y SEP
-                            </li>
-                            <li class="flex items-center text-gray-600">
-                                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Actividades extracurriculares deportivas y culturales
-                            </li>
-                        </ul>
+                    <p class="text-gray-600 text-sm md:text-base">
+                        La Preparatoria Sor Juana Inés de la Cruz de la UAEH se distingue por ofrecer una educación
+                        integral que fomenta el desarrollo académico, humano y social de sus estudiantes. Nuestro
+                        enfoque combina una sólida formación científica con el impulso a los valores humanísticos,
+                        preparando a los jóvenes para enfrentar los desafíos del mundo contemporáneo con una visión
+                        crítica y ética.
+                    </p>
+                    <br>
+                    <div class="grid gap-4">
+                        <div class="flex items-start">
+                            <span class="mr-2 text-[#0066CC]">🏫</span>
+                            <span>Incorporada a la UAEH</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="mr-2 text-[#0066CC]">📖</span>
+                            <span>Educación integral de calidad</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
             <div class="tab-content" id="gradesTab">
+                <!-- Tarjeta de Proceso de Admisión -->
                 <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
-                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Consulta de Boleta</h2>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <img src="../../img/calificacion.webp" alt="Boleta de calificaciones"
-                                class="w-full h-auto rounded-lg">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Indicaciones Básicas para la
+                        Convocatoria Julio-Diciembre 2024</h2>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Este es nuestro proceso de Admisión a nuevo ingreso, el cual está basado única y exclusivamente
+                        en criterios académicos.
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Paso 1: Proceso de Registro de Aspirantes -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">✔️</span>
+                            <div>
+                                <h3 class="font-semibold">1. Proceso de Registro de Aspirantes</h3>
+                                <p class="text-gray-600 text-sm">Ingresa a la opción Registro de Aspirantes de esta
+                                    sección y sigue con mucha atención las instrucciones que se te indican.</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-gray-600 mb-4">Consulta el rendimiento académico detallado de tu hijo/a de
-                                manera rápida y sencilla con nuestra plataforma en línea.</p>
-                            <form class="space-y-4">
-                                <div>
-                                    <label for="student-id" class="block text-sm font-medium text-gray-700">Número de
-                                        Cuenta del Alumno</label>
-                                    <input type="text" id="student-id" name="student-id"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                                </div>
-                                <div>
-                                    <label for="password"
-                                        class="block text-sm font-medium text-gray-700">Contraseña</label>
-                                    <input type="password" id="password" name="password"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-                                </div>
-                                <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded">Consultar
-                                    Boleta</button>
-                            </form>
+
+                        <!-- Paso 2: Pago de Derecho a Examen -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">💳</span>
+                            <div>
+                                <h3 class="font-semibold">2. Pago de Derecho a Examen de Admisión</h3>
+                                <p class="text-gray-600 text-sm">
+                                    Acude a las instalaciones de la Escuela con tu comprobante de pago impreso y paga
+                                    los derechos de tu examen de admisión por $600.00. Entrega copias de tus boletas de
+                                    calificaciones de primer y segundo grado de secundaria, en caso de no tenerlas
+                                    presentarás una constancia emitida por tu escuela con los promedios de primer y
+                                    segundo grado. Si ya concluiste tu Secundaria, presentarás una copia de tu
+                                    Certificado de Secundaria. El horario de atención es de lunes a viernes de 9:00 a
+                                    16:00 hrs.
+                                    <br>
+                                    Si no pagas el derecho al Examen de Admisión, no podrás participar en el proceso.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 3: Consultar la Guía de Examen -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">📄</span>
+                            <div>
+                                <h3 class="font-semibold">3. Consultar Guía para el Examen de Admisión</h3>
+                                <p class="text-gray-600 text-sm">A partir del 14 de febrero podrás consultar la Guía del
+                                    Examen de Admisión, la cual permanecerá durante todo el periodo del Proceso de
+                                    Admisión.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 4: Consultar Resultados del Examen de Admisión -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">📊</span>
+                            <div>
+                                <h3 class="font-semibold">4. Consultar Resultados del Examen de Admisión</h3>
+                                <p class="text-gray-600 text-sm">El 07 de junio del presente en esta sección de
+                                    Aspirantes dar clic en la opción Resultados JD2024 para poder verificar el resultado
+                                    de tu examen.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 5: Inicio de Curso -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">📅</span>
+                            <div>
+                                <h3 class="font-semibold">5. Inicio de Curso</h3>
+                                <p class="text-gray-600 text-sm">El inicio de clases será el lunes 05 de agosto de 2023.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Información de contacto -->
+                        <div class="text-sm text-gray-600 mt-4">
+                            <p>Para cualquier duda o aclaración acude a las instalaciones de la escuela ubicada en Av.
+                                Sergio Butrón Casas No. 59, La Ranchería, Col. Centro, Tlahuelilpan, Hidalgo.</p>
+                            <p>Comunícate a los números de teléfono: (763) 78 6 07 08 o (763) 78 6 12 43</p>
+                            <p>Email: prepsorjuana@hotmail.com</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-auto">
+    <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center">
                 <div>
@@ -388,6 +410,24 @@
                     content.classList.remove('active');
                 });
                 document.getElementById(`${tabName}Tab`).classList.add('active');
+            });
+        });
+
+        // Calendar functionality
+        const calendarTabs = document.querySelectorAll('.calendar-tab');
+        const calendarContent = document.getElementById('calendarContent');
+
+        calendarTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                calendarTabs.forEach(t => {
+                    t.classList.remove('bg-blue-600', 'text-white');
+                    t.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                tab.classList.remove('bg-gray-200', 'text-gray-700');
+                tab.classList.add('bg-blue-600', 'text-white');
+
+                const calendarType = tab.getAttribute('data-calendar');
+                calendarContent.innerHTML = `<p>Mostrando calendario: ${calendarType}</p>`;
             });
         });
 
