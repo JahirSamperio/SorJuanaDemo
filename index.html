@@ -78,21 +78,44 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div
-              class="submenu absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-              <div class="py-1" role="menu" aria-orientation="vertical">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Trasfondo de
-                  la institución</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem">Identidad</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Modelo
-                  Educativo</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem">Directorio</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem">Ubicación</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Visita
-                  Virtual</a>
+            <div class="submenu">
+              <a href="./pages/trasfondo.html">Trasfondo de la institución</a>
+              <div class="relative group">
+                <button>
+                  Identidad
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Misión y Visión</a>
+                  <a href="#">Ideario</a>
+                </div>
+              </div>
+              <div class="relative group">
+                <button>
+                  Modelo Educativo
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Completo</a>
+                  <a href="#">Sintético</a>
+                </div>
+              </div>
+              <div class="relative group">
+                <button>
+                  Directorio
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                <div class="submenu">
+                  <a href="#">Directivos</a>
+                  <a href="#">Docentes</a>
+                  <a href="#">Administrativos</a>
+                </div>
               </div>
             </div>
           </div>
@@ -120,12 +143,14 @@
             </div>
           </div>
         </div>
+        <script src="/js/script.js"></script>
+
 
         <div class="hidden md:flex md:items-center md:space-x-4">
           <button
             class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
             Alumnos</button>
-          <a href="./pages/crearAviso.html"
+          <a href="./pages/crear-aviso.html"
             class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
             Administrativo</a>
         </div>
@@ -203,7 +228,8 @@
             class="w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200">Portal
             Alumnos</button>
           <a href="./pages/crear-aviso.html"
-            class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200 text-center">Portal
+
+            class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200 text-center">Portal
             Administrativo</a>
         </div>
       </div>
