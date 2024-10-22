@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspirantes - Prepa Sor Juana</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .group:hover .submenu,
+        .group:focus-within .submenu {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .submenu {
+                position: static;
+                box-shadow: none;
+            }
+
+            .tab-scroll {
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .tab-scroll::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-blue-600">
+                        <use xlink:href="#graduation-cap" />
+                    </svg>
+                    <a href="index.html" class="font-semibold text-gray-800">
+                        <img src="../../img/LogoSor.png" alt="Logo" class="h-8">
+                    </a>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="../../index.html"
+                        class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+
+                    <div class="relative group">
+                        <button
+                            class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            Acerca de Nosotros
+                            <svg class="ml-1 h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            class="submenu absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div class="py-1" role="menu" aria-orientation="vertical">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Trasfondo de la institución</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Identidad</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Modelo Educativo</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Directorio</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Ubicación</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Visita Virtual</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <button
+                            class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            Institución
+                            <svg class="ml-1 h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div
+                            class="submenu absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div class="py-1" role="menu" aria-orientation="vertical">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Reglamentos</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Infraestructura</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Programa académico</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Estructura Orgánica</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <button
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+                        Alumnos</button>
+                    <a href="./pages/crear-aviso.html"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+                        Administrativo</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button id="hamburger-btn" class="focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Inicio</a>
+
+                <div class="space-y-1">
+                    <button onclick="toggleSubmenu(this)"
+                        class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 flex justify-between items-center">
+                        Acerca de Nosotros
+                        <svg class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden pl-4 space-y-1">
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Trasfondo
+                            de la institución</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Identidad</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Modelo
+                            Educativo</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Directorio</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Ubicación</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Visita
+                            Virtual</a>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <button onclick="toggleSubmenu(this)"
+                        class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 flex justify-between items-center">
+                        Institución
+                        <svg class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="hidden pl-4 space-y-1">
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Reglamentos</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Infraestructura</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Programa
+                            académico</a>
+                        <a href="#"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Estructura
+                            Orgánica</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="px-2 space-y-1">
+                    <button
+                        class="w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+                        Alumnos</button>
+                    <a href="./pages/crear-aviso.html"
+                        class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200 text-center">Portal
+                        Administrativo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Contenido principal -->
+    <div class="flex-grow max-w-6xl mx-auto p-4">
+        <h1 class="text-2xl md:text-3xl font-bold text-[#0066CC] mb-6">Aspirantes</h1>
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow mb-6 overflow-x-auto ">
+            <div class="flex flex-wrap items-center justify-around p-2" id="tabsList">
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="about">
+                    <span>Acerca de</span>
+                </button>
+                <button
+                    class="tab-button flex items-center px-3 py-2 text-sm md:text-base text-gray-700 rounded-md hover:bg-blue-50 hover:text-blue-600 rounded-md"
+                    data-tab="grades">
+                    <span>Proceso de Admisión</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="tabContents">
+            <div class="tab-content active" id="aboutTab">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl font-bold text-center text-[#0066CC] mb-4">Bienvenido a nuestra
+                        preparatoria</h2>
+                    <p class="text-gray-600 text-sm md:text-base">
+                        Si estas por concluir o haz concluido tus estudios de secundaria, entonces tú puedes ingresar a
+                        la Preparatoria 'Sor Juana Inés de la Cruz'
+                    </p>
+                    <div class="flex justify-center my-4">
+                        <img src="../../img/imgPadres.jpg" alt="Imagen padres Prepa Sor Juana"
+                            class="rounded-lg max-w-full md:max-w-md w-full h-auto object-cover">
+                    </div>
+                    <p class="text-gray-600 text-sm md:text-base">
+                        La Preparatoria Sor Juana Inés de la Cruz de la UAEH se distingue por ofrecer una educación
+                        integral que fomenta el desarrollo académico, humano y social de sus estudiantes. Nuestro
+                        enfoque combina una sólida formación científica con el impulso a los valores humanísticos,
+                        preparando a los jóvenes para enfrentar los desafíos del mundo contemporáneo con una visión
+                        crítica y ética.
+                    </p>
+                    <br>
+                    <div class="grid gap-4">
+                        <div class="flex items-start">
+                            <span class="mr-2 text-[#0066CC]">🏫</span>
+                            <span>Incorporada a la UAEH</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="mr-2 text-[#0066CC]">📖</span>
+                            <span>Educación integral de calidad</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tab-content" id="gradesTab">
+                <!-- Tarjeta de Proceso de Admisión -->
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 border-t-4 border-[#0066CC]">
+                    <h2 class="text-xl md:text-2xl font-bold text-[#0066CC] mb-4">Indicaciones Básicas para la
+                        Convocatoria Julio-Diciembre 2024</h2>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Este es nuestro proceso de Admisión a nuevo ingreso, el cual está basado única y exclusivamente
+                        en criterios académicos.
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Paso 1: Proceso de Registro de Aspirantes -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">✔️</span>
+                            <div>
+                                <h3 class="font-semibold">1. Proceso de Registro de Aspirantes</h3>
+                                <p class="text-gray-600 text-sm">Ingresa a la opción Registro de Aspirantes de esta
+                                    sección y sigue con mucha atención las instrucciones que se te indican.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 2: Pago de Derecho a Examen -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">💳</span>
+                            <div>
+                                <h3 class="font-semibold">2. Pago de Derecho a Examen de Admisión</h3>
+                                <p class="text-gray-600 text-sm">
+                                    Acude a las instalaciones de la Escuela con tu comprobante de pago impreso y paga
+                                    los derechos de tu examen de admisión por $600.00. Entrega copias de tus boletas de
+                                    calificaciones de primer y segundo grado de secundaria, en caso de no tenerlas
+                                    presentarás una constancia emitida por tu escuela con los promedios de primer y
+                                    segundo grado. Si ya concluiste tu Secundaria, presentarás una copia de tu
+                                    Certificado de Secundaria. El horario de atención es de lunes a viernes de 9:00 a
+                                    16:00 hrs.
+                                    <br>
+                                    Si no pagas el derecho al Examen de Admisión, no podrás participar en el proceso.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 3: Consultar la Guía de Examen -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">📄</span>
+                            <div>
+                                <h3 class="font-semibold">3. Consultar Guía para el Examen de Admisión</h3>
+                                <p class="text-gray-600 text-sm">A partir del 14 de febrero podrás consultar la Guía del
+                                    Examen de Admisión, la cual permanecerá durante todo el periodo del Proceso de
+                                    Admisión.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 4: Consultar Resultados del Examen de Admisión -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">📊</span>
+                            <div>
+                                <h3 class="font-semibold">4. Consultar Resultados del Examen de Admisión</h3>
+                                <p class="text-gray-600 text-sm">El 07 de junio del presente en esta sección de
+                                    Aspirantes dar clic en la opción Resultados JD2024 para poder verificar el resultado
+                                    de tu examen.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 5: Inicio de Curso -->
+                        <div class="flex items-start">
+                            <span class="mr-2 text-green-500">📅</span>
+                            <div>
+                                <h3 class="font-semibold">5. Inicio de Curso</h3>
+                                <p class="text-gray-600 text-sm">El inicio de clases será el lunes 05 de agosto de 2023.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Información de contacto -->
+                        <div class="text-sm text-gray-600 mt-4">
+                            <p>Para cualquier duda o aclaración acude a las instalaciones de la escuela ubicada en Av.
+                                Sergio Butrón Casas No. 59, La Ranchería, Col. Centro, Tlahuelilpan, Hidalgo.</p>
+                            <p>Comunícate a los números de teléfono: (763) 78 6 07 08 o (763) 78 6 12 43</p>
+                            <p>Email: prepsorjuana@hotmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-semibold">Universidad Autónoma del Estado de Hidalgo (UAEH)</h3>
+                    <p class="text-sm">© 2024 Todos los derechos reservados.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#facebook"></use>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/UAEH" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#twitter"></use>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/uaeh" target="_blank" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6">
+                            <use xlink:href="#instagram"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle functionality
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Submenu toggle functionality for mobile
+        function toggleSubmenu(button) {
+            const submenu = button.nextElementSibling;
+            const arrow = button.querySelector('svg');
+            submenu.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+
+                // Show selected tab content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${tabName}Tab`).classList.add('active');
+            });
+        });
+
+        // Calendar functionality
+        const calendarTabs = document.querySelectorAll('.calendar-tab');
+        const calendarContent = document.getElementById('calendarContent');
+
+        calendarTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                calendarTabs.forEach(t => {
+                    t.classList.remove('bg-blue-600', 'text-white');
+                    t.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                tab.classList.remove('bg-gray-200', 'text-gray-700');
+                tab.classList.add('bg-blue-600', 'text-white');
+
+                const calendarType = tab.getAttribute('data-calendar');
+                calendarContent.innerHTML = `<p>Mostrando calendario: ${calendarType}</p>`;
+            });
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
