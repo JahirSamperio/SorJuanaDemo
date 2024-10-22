@@ -1,0 +1,299 @@
+.swiper-button-next,
+.swiper-button-prev {
+  color: #F8F8F8;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #F8F8F8;
+}
+
+.swiper-container {
+  overflow: hidden;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  /* Ajusta la altura según tus necesidades */
+}
+
+/* Evitar que los slides salgan de la vista */
+.swiper-wrapper {
+  transition: transform 0.3s ease;
+  /* Añade transición suave */
+}
+
+/* Estilo para mostrar el menú en dispositivos móviles */
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+}
+
+/* Mejor presentación del menú móvil */
+#mobile-menu {
+  background-color: #F8F8F8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  width: 200px;
+  z-index: 50;
+  /* Asegúrate de que el menú esté en la parte superior */
+}
+
+#mobile-menu a {
+  display: block;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #F8F8F8;
+  text-align: center;
+}
+
+#mobile-menu a:hover {
+  background-color: #F8F8F8;
+}
+
+/* Añadir visibilidad para los botones */
+.mobile-menu-buttons {
+  margin-top: 10px;
+}
+
+.mobile-menu-buttons button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #02349A;
+  color: #F8F8F8;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.mobile-menu-buttons button:hover {
+  background-color: #0066CC;
+}
+
+/* Ajustes generales del menú */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #F8F8F8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los enlaces del menú */
+.menu a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
+  display: block;
+  text-align: left;
+}
+
+/* Hover y foco de los enlaces */
+.menu a:hover {
+  background-color: #0066CC;
+  color: #F8F8F8;
+}
+
+/* Estilo de los submenús */
+.group {
+  position: relative;
+}
+
+.group .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #F8F8F8;
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.group.open .submenu {
+  display: block;
+}
+
+/* Estilo para los sub-submenús */
+.group .submenu .sub-submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #E0E0E0; /* Color más claro */
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.group .submenu .submenu-item:hover .sub-submenu {
+  display: block;
+}
+
+/* Transiciones suaves */
+.submenu a, .sub-submenu a {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Alinear texto en los submenús */
+.submenu a, .sub-submenu a {
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.submenu a:hover, .sub-submenu a:hover {
+  background-color: #0066CC;
+  color: #F8F8F8;
+}
+
+
+/* Ajustes personalizados para los íconos y textos */
+.icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+}
+
+.icon-box img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.icon-box h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.icon-box p {
+  font-size: 0.9em;
+  color: #4A4A4A;
+}
+
+.section-header {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #D32F2F;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Ajusta la imagen del logo */
+.logo-img {
+  max-height: 50px;
+  /* Ajusta la altura máxima según lo que desees */
+  width: auto;
+  /* Mantiene la proporción de la imagen */
+  object-fit: contain;
+  /* Asegura que la imagen se ajuste dentro del contenedor sin recortarse */
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    max-height: 40px;
+    /* Ajusta el tamaño para pantallas más pequeñas */
+  }
+}
+
+/* ----------- NUEVOS ESTILOS PARA LOS SUBMENÚS ----------- */
+
+/* Estilos para el menú desplegable en dispositivos de escritorio */
+.group:hover .group-hover\:block {
+  display: block;
+}
+
+/* Ajuste del menú principal para submenús */
+.group {
+  position: relative;
+  cursor: pointer;
+}
+
+.group-hover\:block {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.group:hover .group-hover\:block,
+.group.open .group-hover\:block {
+  display: block;
+}
+
+.group-hover\:block a {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.group-hover\:block a:hover {
+  background-color: #0066CC;
+  color: #F8F8F8;
+}
+
+/* Ajuste para que los submenús secundarios se deslicen a la derecha */
+.group-hover\:block .group {
+  position: relative;
+}
+
+.group-hover\:block .group-hover\:block {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+}
+
+.group-hover\:block .group:hover .group-hover\:block,
+.group-hover\:block .group.open .group-hover\:block {
+  display: block;
+}
+
+/* Transición suave y mejores visuales */
+.group-hover\:block a {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.group-hover\:block .group:hover>a {
+  background-color: #0066CC;
+  color: #F8F8F8;
+}
