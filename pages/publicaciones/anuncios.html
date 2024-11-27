@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anuncios EPSJIC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .group:hover .submenu,
+    .group:focus-within .submenu {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .submenu {
+        position: static;
+        box-shadow: none;
+      }
+
+      .tab-scroll {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .tab-scroll::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .photo-strip {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 20px 0;
+    }
+
+    .photo-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .photo-item {
+      flex: 0 0 auto;
+      width: 250px;
+      height: 180px;
+      margin-right: 20px;
+      scroll-snap-align: start;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .photo-strip-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-strip {
+      transition: transform 0.3s ease;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+    }
+
+    .nav-arrow-left {
+      left: 10px;
+    }
+
+    .nav-arrow-right {
+      right: 10px;
+    }
+
+    /* Base styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #F8F8F8;
+        color: #231F20;
+    }
+
+    /* Announcements styles */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .announcements {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .announcement {
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .announcement:hover {
+        transform: translateY(-5px);
+    }
+
+    .announcement img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .announcement-content {
+        padding: 1rem;
+    }
+
+    .announcement h2 {
+        margin-top: 0;
+        color: #0066CC;
+    }
+
+    .announcement p {
+        color: #8C8C8C;
+    }
+
+    .announcement .date {
+        font-size: 0.9rem;
+        color: #8C8C8C;
+        margin-top: 1rem;
+    }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+        background-color: #FFFFFF;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 800px;
+        width: 90%;
+    }
+
+    .close {
+        color: #8C8C8C;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: #231F20;
+    }
+
+    .modal-image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .modal-title {
+        color: #0066CC;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .modal-description {
+        color: #231F20;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .modal-date {
+        font-size: 0.9rem;
+        color: #8C8C8C;
+    }
+
+    /* New vertical layout styles */
+    .modal-content {
+      display: flex;
+      flex-direction: row;
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-image {
+      flex: 0 0 50%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .modal-info {
+      flex: 0 0 50%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .modal-date {
+      font-size: 0.9rem;
+      color: #8C8C8C;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        flex-direction: column;
+        max-width: 95%;
+        max-height: 95%;
+      }
+
+      .modal-image {
+        flex: 0 0 auto;
+        max-height: 300px;
+        object-fit: contain;
+      }
+
+      .modal-info {
+        flex: 0 0 auto;
+        padding: 1rem;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+      }
+
+      .modal-description {
+        font-size: 0.875rem;
+      }
+
+      .modal-date {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* New responsive styles */
+    @media (max-width: 768px) {
+      .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+        padding: 10px;
+      }
+
+      .modal-image {
+        max-height: 300px;
+        object-fit: contain;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+      }
+
+      .modal-description {
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      .modal-date {
+        font-size: 0.75rem;
+      }
+    }
+</style>
+
+
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center gap-2">
+          <svg class="w-8 h-8 text-blue-600">
+            <use xlink:href="#graduation-cap" />
+          </svg>
+          <a href="/index.html" class="font-semibold text-gray-800">
+            <img src="/img/LogoSor.png" alt="Logo" class="h-8">
+          </a>
+        </div>
+
+        <div class="hidden md:flex md:items-center md:space-x-4">
+          <a href="/index.html"
+            class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+
+          <div class="relative group">
+            <button
+              class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600">
+              Acerca de Nosotros
+              <svg class="ml-1 h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div
+              class="submenu absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div class="py-1" role="menu" aria-orientation="vertical">
+                <a href="/pages/acerca-nosotros/trasfondo.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Trasfondo de la
+                  institución</a>
+
+                <a href="/pages/acerca-nosotros/trasfondo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem">Identidad</a>
+                <a href="/pages/acerca-nosotros/trasfondo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Modelo
+                  Educativo</a>
+                <a href="/pages/acerca-nosotros/trasfondo.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem">Directorio</a>
+                <a href="/pages/acerca-nosotros/ubicacion.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+
+                  role="menuitem">Ubicación</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Visita
+                  Virtual</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button
+              class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600">
+              Institución
+              <svg class="ml-1 h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div
+              class="submenu absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div class="py-1" role="menu" aria-orientation="vertical">
+                <a href="/pages/institucion/reglamentos.html"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Reglamentos</a>
+                <a href="/pages/institucion/infraestructura.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem">Infraestructura</a>
+                <a href="/pages/institucion/programa-academico.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Programa
+                  académico</a>
+                <a href="/pages/institucion/estructura-organica" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Estructura
+                  Orgánica</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden md:flex md:items-center md:space-x-4">
+          <button
+            class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+            Alumnos</button>
+          <a href="/pages/crear-aviso.html"
+            class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+            Administrativo</a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="hamburger-btn" class="focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/index.html"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Inicio</a>
+
+        <div class="space-y-1">
+          <button onclick="toggleSubmenu(this)"
+            class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 flex justify-between items-center">
+            Acerca de Nosotros
+            <svg class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="hidden pl-4 space-y-1">
+            <a href="/pages/acerca-nosotros/trasfondo.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Trasfondo
+              de la institución</a>
+            <a href="/pages/acerca-nosotros/trasfondo.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Identidad</a>
+            <a href="/pages/acerca-nosotros/trasfondo.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Modelo
+              Educativo</a>
+            <a href="/pages/acerca-nosotros/trasfondo.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Directorio</a>
+            <a href="/pages/acerca-nosotros/ubicacion.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Ubicación</a>
+            <a href="/pages/acerca-nosotros/trasfondo.html"
+
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Visita
+              Virtual</a>
+          </div>
+        </div>
+
+        <div class="space-y-1">
+          <button onclick="toggleSubmenu(this)"
+            class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 flex justify-between items-center">
+            Institución
+            <svg class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="hidden pl-4 space-y-1">
+            <a href="/pages/institucion/reglamentos.html"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Reglamentos</a>
+            <a href="#"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Infraestructura</a>
+            <a href="#"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Programa
+              académico</a>
+            <a href="#"
+              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50">Estructura
+              Orgánica</a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-4 pb-3 border-t border-gray-200">
+        <div class="px-2 space-y-1">
+          <button
+            class="w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200">Portal
+            Alumnos</button>
+          <a href="./pages/crear-aviso.html"
+            class="block w-full bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-blue-700 transition-colors duration-200 text-center">Portal
+            Administrativo</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="max-w-6xl mx-auto p-4">
+
+    <!-- Announcements -->
+    <div class="container">
+        <div class="announcements">
+            <div class="announcement" data-id="1">
+                <img src="/img/30aniversario.jpg" alt="30 Aniversario">
+                <div class="announcement-content">
+                    <h2>Celebración del 30 Aniversario</h2>
+                    <p>Únete a nosotros para celebrar tres décadas de excelencia académica.</p>
+                    <div class="date">Mayo 15, 2023</div>
+                </div>
+            </div>
+            <div class="announcement" data-id="2">
+                <img src="/img/programa30ani.jpg" alt="Programa de Investigación">
+                <div class="announcement-content">
+                    <h2>Programa de Investigación de Verano</h2>
+                    <p>Aplica ahora para nuestro programa anual de investigación de verano.</p>
+                    <div class="date">Mayo 10, 2023</div>
+                </div>
+            </div>
+            <div class="announcement" data-id="3">
+                <img src="/img/LogoSor.png" alt="Serie de Conferencias">
+                <div class="announcement-content">
+                    <h2>Serie de Conferencias Invitadas</h2>
+                    <p>No te pierdas nuestra próxima serie de conferencias con expertos reconocidos.</p>
+                    <div class="date">Mayo 5, 2023</div>
+                </div>
+            </div>
+            <div class="announcement" data-id="4">
+                <img src="/img/alumnos1.png" alt="Iniciativa de Sostenibilidad">
+                <div class="announcement-content">
+                    <h2>Iniciativa de Sostenibilidad del Campus</h2>
+                    <p>Conoce nuestras nuevas iniciativas de sostenibilidad en todo el campus.</p>
+                    <div class="date">Mayo 1, 2023</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="announcementModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="modal-image-container">
+            <img id="modalImage" src="" alt="" class="modal-image">
+          </div>
+          <div class="modal-info">
+            <h2 id="modalTitle" class="modal-title"></h2>
+            <p id="modalDescription" class="modal-description"></p>
+            <div id="modalDate" class="modal-date"></div>
+          </div>
+        </div>
+      </div>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("announcementModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Get all announcements
+        var announcements = document.getElementsByClassName("announcement");
+
+        // Announcement data
+        var announcementData = {
+            1: {
+                title: "Celebración del 30 Aniversario",
+                description: "Nos complace anunciar la celebración de nuestro 30 aniversario. Este hito marca tres décadas de excelencia académica, innovación y compromiso con la educación de calidad. Durante este mes especial, tendremos una serie de eventos, incluyendo conferencias de distinguidos invitados, exposiciones de proyectos estudiantiles y una gran gala de celebración. Invitamos a todos los estudiantes, profesores, personal y exalumnos a unirse a nosotros en esta conmemoración histórica.",
+                date: "Mayo 15, 2023",
+                image: "/img/30aniversario.jpg"
+            },
+            2: {
+                title: "Programa de Investigación de Verano",
+                description: "Las aplicaciones están abiertas para nuestro Programa de Investigación de Verano anual. Animamos a los estudiantes de pregrado a aplicar y ganar una valiosa experiencia en investigación. Este programa ofrece la oportunidad de trabajar en proyectos innovadores bajo la tutoría de profesores destacados en diversos campos de estudio.",
+                date: "Mayo 10, 2023",
+                image: "/img/programa30ani.jpg"
+            },
+            3: {
+                title: "Serie de Conferencias Invitadas",
+                description: "No te pierdas nuestra próxima serie de conferencias con expertos reconocidos en diversos campos. Estas charlas ofrecerán perspectivas únicas sobre temas de vanguardia en ciencia, tecnología, artes y humanidades. Consulta el cronograma y reserva tu lugar ahora para estas sesiones enriquecedoras.",
+                date: "Mayo 5, 2023",
+                image: "/img/LogoSor.png"
+            },
+            4: {
+                title: "Iniciativa de Sostenibilidad del Campus",
+                description: "Conoce nuestras nuevas iniciativas de sostenibilidad en todo el campus y cómo puedes contribuir a hacer que nuestra institución sea más respetuosa con el medio ambiente. Desde programas de reciclaje hasta proyectos de energía renovable, estamos comprometidos a reducir nuestra huella ecológica y fomentar prácticas sostenibles en toda nuestra comunidad.",
+                date: "Mayo 1, 2023",
+                image: "/img/alumnos1.png"
+            }
+        };
+
+        for (var i = 0; i < announcements.length; i++) {
+        announcements[i].onclick = function() {
+          var id = this.getAttribute('data-id');
+          var data = announcementData[id];
+
+          document.getElementById("modalImage").src = data.image;
+
+          // Check if the image is in vertical orientation
+          var img = new Image();
+          img.src = data.image;
+          if (img.width < img.height) {
+            document.getElementById("modalImage").style.maxHeight = "100%";
+            document.getElementById("modalImage").style.objectFit = "contain";
+          } else {
+            document.getElementById("modalImage").style.maxHeight = "300px";
+            document.getElementById("modalImage").style.objectFit = "contain";
+          }
+
+          document.getElementById("modalTitle").innerHTML = data.title;
+          document.getElementById("modalDescription").innerHTML = data.description;
+          document.getElementById("modalDate").innerHTML = data.date;
+
+          modal.style.display = "block";
+        }
+      }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
