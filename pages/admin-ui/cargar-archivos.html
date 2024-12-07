@@ -1,239 +1,411 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subir Archivos - Panel de Administración</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    .icon-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Archivos - Panel de Administración</title>
+    <style>
+        :root {
+            --primary: #005198;
+            --secondary: #0066CC;
+            --background: #F8F8F8;
+            --text: #231f20;
+            --text-light: #8C8C8C;
+            --white: #FFFFFF;
+            --accent: #E4E5E6;
+            --red: #D32F2F;
+        }
 
-    .icon-box img {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 10px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .icon-box h4 {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-    .icon-box p {
-      font-size: 0.9em;
-      color: #4A4A4A;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .section-header {
-      font-size: 1.8em;
-      font-weight: bold;
-      color: #D32F2F;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-    .drop-zone {
-      border: 2px dashed #cbd5e0;
-      border-radius: 0.375rem;
-      padding: 2rem;
-      text-align: center;
-      transition: border-color 0.3s ease;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
 
-    .drop-zone.dragover {
-      border-color: #4299e1;
-    }
+        .logo img {
+            height: 40px;
+        }
 
-    @media (max-width: 768px) {
-      .mobile-menu {
-        display: none;
-      }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
 
-      .mobile-menu.active {
-        display: block;
-      }
-    }
-  </style>
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .logout-btn {
+            background-color: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .section-header {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--red);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .drop-zone {
+            border: 2px dashed var(--accent);
+            border-radius: 4px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            border-color: var(--secondary);
+        }
+
+        .file-list {
+            margin-top: 1rem;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--accent);
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .remove-file {
+            background-color: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary);
+        }
+
+        .uploaded-files {
+            margin-top: 2rem;
+        }
+
+        .uploaded-file {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .delete-file {
+            color: var(--red);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu a {
+                display: block;
+                padding: 0.5rem 0;
+                color: var(--text);
+                text-decoration: none;
+            }
+        }
+    </style>
 </head>
-
-<body class="min-h-screen bg-gray-50 flex flex-col">
-  <!-- Navigation Bar -->
-  <nav class="bg-white shadow-md relative">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex items-center gap-2">
-          <svg class="w-8 h-8 text-blue-600">
-            <use xlink:href="#graduation-cap" />
-          </svg>
-          <a href="/index.html" class="font-semibold text-gray-800">
-            <img src="/img/LogoSor.png" alt="Logo" class="h-8">
-          </a>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="/img/LogoSor.png" alt="Logo">
+                </div>
+                <div class="nav-links">
+                    <a href="administrar-anuncios.html">Anuncios</a>
+                    <a href="cargar-archivos.html">Archivos</a>
+                    <a href="administrar-galeria.html">Galería</a>
+                    <button class="logout-btn">Cerrar Sesión</button>
+                </div>
+            </nav>
         </div>
-        
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center space-x-4">
-          <a href="administrar-anuncios.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Anuncios</a>
-          <a href="cargar-archivos.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Archivos</a>
-          <a href="administrar-galeria.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Galería</a>
-          <button id="logout-button" class="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700 transition duration-300">Cerrar Sesión</button>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="section-header">Subir Archivos Adjuntos</h1>
+
+            <div class="card">
+                <form id="upload-form">
+                    <div class="form-group">
+                        <label for="title">Título</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Descripción</label>
+                        <textarea id="description" name="description" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoría</label>
+                        <select id="category" name="category" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="Schedules">Horarios</option>
+                            <option value="Calendars">Calendarios</option>
+                            <option value="Calls">Convocatorias</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subcategory">Subcategoría</label>
+                        <select id="subcategory" name="subcategory" required>
+                            <option value="">Seleccione una subcategoría</option>
+                            <option value="Semester 1">Semestre 1</option>
+                            <option value="Semester 2">Semestre 2</option>
+                            <option value="Semester 3">Semestre 3</option>
+                            <option value="Semester 4">Semestre 4</option>
+                            <option value="Semester 5">Semestre 5</option>
+                            <option value="Semester 6">Semestre 6</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file">Seleccionar archivo</label>
+                        <div id="drop-zone" class="drop-zone">
+                            <p>Arrastra y suelta archivos aquí o haz clic para seleccionar</p>
+                            <input type="file" id="file" name="file" multiple hidden>
+                        </div>
+                        <div id="file-list" class="file-list"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Subir Archivo</button>
+                </form>
+            </div>
+
+            <div class="card uploaded-files">
+                <h2>Archivos Subidos</h2>
+                <div id="uploaded-files-list">
+                    <div class="uploaded-file">
+                        <span>ejemplo.jpg</span>
+                        <button class="delete-file">Eliminar</button>
+                    </div>
+                    <div class="uploaded-file">
+                        <span>documento.pdf</span>
+                        <button class="delete-file">Eliminar</button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
-          <button id="mobile-menu-button" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" aria-label="toggle menu">
-            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
-              <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
 
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="mobile-menu md:hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <a href="administrar-anuncios.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Anuncios</a>
-          <a href="cargar-archivos.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Archivos</a>
-          <a href="administrar-galeria.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">Galería</a>
-          <button id="mobile-logout-button" class="w-full text-left bg-red-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-red-700 transition duration-300 mt-2">Cerrar Sesión</button>
-        </div>
-      </div>
-    </div>
-  </nav>
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
 
-  <!-- Main Content -->
-  <main class="flex-grow container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">Subir Archivos Adjuntos</h1>
+        // File upload functionality
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file');
+        const fileList = document.getElementById('file-list');
 
-    <div class="bg-white shadow rounded-lg p-6 mb-8">
-      <form action="/upload" method="post" enctype="multipart/form-data">
-        <div class="mb-4">
-          <label for="file" class="block text-sm font-medium text-gray-700 mb-2">Seleccionar archivo</label>
-          <div id="drop-zone" class="drop-zone">
-            <p>Arrastra y suelta archivos aquí o haz clic para seleccionar</p>
-            <input type="file" id="file" name="file" accept="image/*,.pdf" multiple
-              class="hidden">
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
-          <textarea id="description" name="description" rows="3"
-            class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
-        </div>
-        <div>
-          <button type="submit"
-            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-            Subir Archivo
-          </button>
-        </div>
-      </form>
-    </div>
+        dropZone.addEventListener('click', () => fileInput.click());
 
-    <div class="bg-white shadow rounded-lg p-6">
-      <h2 class="text-xl font-semibold mb-4">Archivos Subidos</h2>
-      <ul class="divide-y divide-gray-200">
-        <li class="py-4 flex justify-between items-center">
-          <span>ejemplo.jpg</span>
-          <button
-            class="text-red-600 hover:text-red-800 font-medium">Eliminar</button>
-        </li>
-        <li class="py-4 flex justify-between items-center">
-          <span>documento.pdf</span>
-          <button
-            class="text-red-600 hover:text-red-800 font-medium">Eliminar</button>
-        </li>
-      </ul>
-    </div>
-  </main>
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-8">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-lg font-semibold">Universidad Autónoma del Estado de Hidalgo (UAEH)</h3>
-          <p class="text-sm">© 2024 Todos los derechos reservados.</p>
-        </div>
-        <div class="flex space-x-4">
-          <a href="https://www.facebook.com/UAEH" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
-            <span class="sr-only">Facebook</span>
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
-            </svg>
-          </a>
-          <a href="https://twitter.com/UAEH" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
-            <span class="sr-only">Twitter</span>
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-            </svg>
-          </a>
-          <a href="https://www.instagram.com/uaeh" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white">
-            <span class="sr-only">Instagram</span>
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
 
-  <script>
-    // Toggle mobile menu
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
 
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
+        fileInput.addEventListener('change', () => {
+            handleFiles(fileInput.files);
+        });
 
-    // Logout functionality (you'll need to implement this on the server-side as well)
-    const logoutButton = document.getElementById('logout-button');
-    const mobileLogoutButton = document.getElementById('mobile-logout-button');
+        function handleFiles(files) {
+            fileList.innerHTML = '';
+            Array.from(files).forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <span>${file.name}</span>
+                    <button type="button" class="remove-file" data-index="${index}">Eliminar</button>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
 
-    function logout() {
-      // Add your logout logic here
-      alert('Cerrando sesión...');
-      // Redirect to login page or perform other logout actions
-    }
+        fileList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-file')) {
+                const index = parseInt(e.target.getAttribute('data-index'));
+                removeFile(index);
+            }
+        });
 
-    logoutButton.addEventListener('click', logout);
-    mobileLogoutButton.addEventListener('click', logout);
+        function removeFile(index) {
+            const dt = new DataTransfer();
+            const { files } = fileInput;
+            for (let i = 0; i < files.length; i++) {
+                if (index !== i)
+                    dt.items.add(files[i]);
+            }
+            fileInput.files = dt.files;
+            handleFiles(fileInput.files);
+        }
 
-    // File upload functionality
-    const dropZone = document.getElementById('drop-zone');
-    const fileInput = document.getElementById('file');
+        // Form submission
+        const uploadForm = document.getElementById('upload-form');
+        uploadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(uploadForm);
+            // Here you would typically send the formData to your server
+            console.log('Form submitted with the following data:');
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
+            // Reset form after submission
+            uploadForm.reset();
+            fileList.innerHTML = '';
+            alert('Archivo(s) subido(s) exitosamente!');
+        });
 
-    dropZone.addEventListener('click', () => fileInput.click());
-
-    dropZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropZone.classList.add('dragover');
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.classList.remove('dragover');
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropZone.classList.remove('dragover');
-      fileInput.files = e.dataTransfer.files;
-    });
-
-    fileInput.addEventListener('change', () => {
-      // Aquí puedes agregar lógica para mostrar los archivos seleccionados
-    });
-  </script>
-
+        // Logout functionality
+        const logoutBtns = document.querySelectorAll('.logout-btn');
+        logoutBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Add your logout logic here
+                alert('Cerrando sesión...');
+                // Redirect to login page or perform other logout actions
+            });
+        });
+    </script>
 </body>
-
 </html>
